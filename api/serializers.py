@@ -25,4 +25,4 @@ class ClassifiedUserSerializer(serializers.HyperlinkedModelSerializer):
 class CarSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Cars
-        fields = ['brand','model','color','image']
+        fields = ['brand','model','color','price','category','image']

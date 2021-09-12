@@ -78,6 +78,7 @@ class Cars(models.Model):
 	color = models.CharField(max_length=255,null=True,blank=True)
 	image = models.ImageField(upload_to=f'upload/cars/',null=True,blank=True)
 	category = models.CharField(max_length=255,choices=CATEGORY,null=True,blank=True)
+	price = models.PositiveIntegerField(null=True,blank=True)
 
 	class Meta:
 		verbose_name = 'Car'

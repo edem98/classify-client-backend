@@ -18,7 +18,7 @@ class ClassifiedUserAdmin(admin.ModelAdmin):
 
 @admin.register(Cars)
 class CarsAdmin(admin.ModelAdmin):
-	list_display = ('brand','model','color','category','display_image')
+	list_display = ('brand','model','color','category','price','display_image')
 
 	def display_image(self, obj):
 		if obj.image != None:
