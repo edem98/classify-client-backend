@@ -221,3 +221,6 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+db.sqlite3
+
+__pycache__/*

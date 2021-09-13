@@ -7,7 +7,7 @@ from .models import ClassifiedUser, Cars
 
 
 def predictict_category(user_data):
-    return 'A'
+    return 'B'
 
 def get_cars(category):
     cars = Cars.objects.filter(category=category)
