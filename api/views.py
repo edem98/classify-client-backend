@@ -16,18 +16,16 @@ def get_cars(category):
 def index(request):
     return render(request, 'index.html')
 
+
 class UserViewSet(viewsets.ModelViewSet):
     queryset = ClassifiedUser.objects.all()
     serializer_class = ClassifiedUserSerializer
 
     def create(self,request,*args,**kwargs):
-        data = {}
         user_data = request.data
         user_data = user_data['data']
-        for item in user_data:
-            data[item['name']] = item['value']
-
-        category = predictict_category(data)
+        print(user_data)
+        category = predictict_category(user_data)
 
         if category is not None:
             cars = get_cars(category)
