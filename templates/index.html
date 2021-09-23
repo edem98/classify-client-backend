@@ -22,13 +22,16 @@
       href="{% static 'css/bootstrap.min.css' %}"
     />
 
-    <link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.css' %}" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/font-awesome.css' %}"
+    />
 
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
   </head>
 
   <body>
-
     <!-- ***** Cars Starts ***** -->
     <section class="section" id="find-cars">
       <div class="container">
@@ -37,12 +40,15 @@
             <div class="section-heading">
               <h2>Find <em>Cars</em></h2>
               <img src="{% static 'images/line-dec.png' %}" alt="" />
-              <p>Fill the form bellow with the client information to find his/her best suited cars.</p>
+              <p>
+                Fill the form bellow with the client information to find his/her
+                best suited cars.
+              </p>
             </div>
           </div>
         </div>
         <div class="form-div">
-          <form method="post" id="classify-form" >
+          <form method="post" id="classify-form">
             {% csrf_token %}
             <input
               class="user-input"
@@ -72,31 +78,35 @@
             <label for="gender" class="user-label">Gender</label>
             <select id="gender" name="gender" class="user-select">
               <option value="" selected>Please choose</option>
-              <option value="MALE">MALE</option>
-              <option value="FEMALE">FEMALE</option>
-              <option value="OTHER">OTHER</option>
+              <option value="1">MALE</option>
+              <option value="0">FEMALE</option>
             </select>
-            <label for="ever_married" class="user-label">Marital Status</label>
-            <select id="ever_married" name="ever_married" class="user-select">
-              <option value="" selected>Please choose</option>
-              <option value="MARRIED">MARRIED</option>
-              <option value="SEPERATED">SEPERATED</option>
-              <option value="DIVORCED">DIVORCED</option>
-              <option value="WIDOWED">WIDOWED</option>
-              <option value="NEVER_MARRIED">NEVER_MARRIED</option>
-            </select>
+            <label for="ever_married" class="user-label">
+              <input
+                type="checkbox"
+                name="ever_married"
+                class="user-checkbox"
+              />
+              Ever Married
+            </label>
             <input type="date" name="birth_day" class="user-input" />
             <label for="graduated" class="user-label">
               <input type="checkbox" name="graduated" class="user-checkbox" />
               Graduated
             </label>
-            <input
-              type="text"
-              name="profession"
-              class="user-input"
-              placeholder="Profession*"
-              required=""
-            />
+            <label for="profession" class="user-label">Profession</label>
+            <select id="profession" name="profession" class="user-select">
+              <option value="" selected>Please choose</option>
+              <option value="0">ARTIST</option>
+              <option value="1">DOCTOR</option>
+              <option value="2">ENGINEER</option>
+              <option value="3">ENTERTAINMENT</option>
+              <option value="4">EXCECUTIVE</option>
+              <option value="5">HEALTH CARE</option>
+              <option value="6">HOME MAKER</option>
+              <option value="7">LAWER</option>
+              <option value="8">MARKETING</option>
+            </select>
             <input
               type="number"
               step="1"
@@ -116,7 +126,7 @@
               required=""
             />
             <button type="submit" id="form-submit" class="user-button">
-              Recommand cars
+              Find best cars for you
             </button>
           </form>
         </div>

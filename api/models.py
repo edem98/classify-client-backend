@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+
 
 class ClassifiedUser(models.Model):
 
@@ -40,12 +40,11 @@ class ClassifiedUser(models.Model):
 		)
 
 	
-	user = models.OneToOneField(User,null=False,on_delete=models.CASCADE,blank=True)
 	first_name = models.CharField(max_length=255,null=True,blank=True)
 	last_name = models.CharField(max_length=255,null=True,blank=True)
 	email = models.EmailField(null=True,blank=True)
 	gender = models.CharField(max_length=255,choices=GENDER,default=MALE,blank=True)
-	ever_married =  models.CharField(max_length=255,choices=MARITAL_STATUS,default=NEVER_MARRIED,blank=True)
+	ever_married =  models.BooleanField(null=True,blank=True,default=False)
 	birth_day = models.DateField(null=True,blank=True)
 	graduated = models.BooleanField(null=True,blank=True,default=False)
 	profession = models.CharField(max_length=255,null=True,blank=True)

@@ -1,41 +1,39 @@
-const formatter = new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'USD',
-      });
+var formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+});
 
 const extractData = (data) => {
-  const extractedData = {}
-  data.forEach((item) => 
-    {
-    extractedData[item.name] = item.value
-  })
-  return extractedData
-}
+  const extractedData = {};
+  data.forEach((item) => {
+    extractedData[item.name] = item.value;
+  });
+  return extractedData;
+};
 
 const getTUserCars = async (BASE_URL, data) => {
+  console.log(data)
   try {
     const response = await axios.post(`${BASE_URL}users/`, {
       data: data,
-    }, {headers:{"X-CSRFToken": data.csrfmiddlewaretoken },});
+    }, {
+      headers: { 'X-CSRFToken': data.csrfmiddlewaretoken },
+    });
     return response.data;
   } catch (errors) {
     console.error(errors);
     alert(`Could not process your request\n${errors}`);
   }
 };
-
-// hide recommandation section
 $('.recommanded-cars').hide();
-
-//handle form subscription
 $('#classify-form').on('submit', (e) => {
   e.preventDefault();
   const form = $('#classify-form');
   const formData = form.serializeArray();
-  const extractedData = extractData(formData);
   const BASE_URL = 'http://127.0.0.1:8000/api/';
+  const extractedData = extractData(formData);
   const carsData = getTUserCars(BASE_URL, extractedData);
-  carsData.then(cars => {
+  carsData.then((cars) => {
     if (cars.length > 0) {
       $('#cars').empty();
       cars.forEach((item) => {
@@ -60,12 +58,15 @@ $('#classify-form').on('submit', (e) => {
       $('#find-cars').fadeOut(1000);
       $('.recommanded-cars').fadeIn(1000);
     } else {
-      $('#cars').append('<p>No cars</p>');
+      $('#find-cars').fadeOut(1000);
+      $('.recommanded-cars').fadeIn(1000);
+      $('#cars').empty();
+      $('#cars').append(
+        '<div class="no-cars-container"><p class="no-cars">No cars available for your profile</p></div>',
+      );
     }
   });
 });
-
-// display subscription form on try again button pressed
 $('#fill-form').on('click', (e) => {
   $('.recommanded-cars').hide();
   $('#find-cars').fadeIn(1000);

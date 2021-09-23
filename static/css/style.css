@@ -1386,3 +1386,17 @@ a:hover {
   justify-content: center;
   align-items: center;
 }
+
+.no-cars-container {
+  display: flex;
+  justify-items: center;
+  margin: auto;
+  align-items: center;
+}
+
+.no-cars {
+  text-align: center;
+  align-self: center;
+  font-size: large;
+  color: #1e1e1e;
+}

@@ -6,7 +6,7 @@ from django.utils.html import format_html
 class ClassifiedUserAdmin(admin.ModelAdmin):
 	list_filter = ['ever_married','graduated','anonymised_category','segmentation','gender']
 	search_fields = ['first_name','last_name','profession']
-	list_display = ('user','first_name','last_name',
+	list_display = ('first_name','last_name',
 		'email','gender','ever_married',
 		'birth_day','graduated','profession',
 		'work_experience', 'spending_score',
